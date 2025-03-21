@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Preview</title>
+  <link rel="stylesheet" href="{{styleUri}}">
+</head>
+<body>
+  <div class="container">
+    <div class="toolbar">
+      <div class="filter-container">
+        <select id="filterColumn">
+          <option value="">Select column</option>
+        </select>
+        <input type="text" id="filterValue" placeholder="Filter value">
+        <button id="applyFilter">Apply Filter</button>
+        <button id="clearFilter">Clear Filters</button>
+      </div>
+      
+      <div class="actions">
+        <button id="exportBtn">Export</button>
+        <div class="dropdown" id="exportDropdown">
+          <a href="#" data-format="csv">CSV</a>
+          <a href="#" data-format="json">JSON</a>
+          <a href="#" data-format="tsv">TSV</a>
+        </div>
+        
+        <button id="visualizeBtn">Visualize</button>
+        <div class="dropdown" id="visualizeDropdown">
+          <a href="#" data-type="scatter">Scatter Plot</a>
+          <a href="#" data-type="bar">Bar Chart</a>
+          <a href="#" data-type="line">Line Chart</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="data-container">
+      <div class="loading">Loading CSV data...</div>
+      <table id="dataTable" style="display: none;">
+        <thead>
+          <tr id="headerRow"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script>
+    (function() {
+      const vscode = acquireVsCodeApi();
+      let allColumns = [];
+      let currentSortColumn = '';
+      let currentSortAscending = true;
+      let activeFilters = [];
+      
+      // Handle messages from the extension
+      window.addEventListener('message', event => {
+        const message = event.data;
+        if (message.type === 'csvData') {
+          document.querySelector('.loading').style.display = 'none';
+          document.getElementById('dataTable').style.display = 'table';
+          displayCSVData(message.data, message.columns);
+          populateFilterDropdown(message.columns);
+          allColumns = message.columns;
+        }
+      });
+      
+      function displayCSVData(data, columns) {
+        const headerRow = document.getElementById('headerRow');
+        const tableBody = document.getElementById('tableBody');
+        
+        // Clear existing content
+        headerRow.innerHTML = '';
+        tableBody.innerHTML = '';
+        
+        // Create header row
+        columns.forEach(column => {
+          const th = document.createElement('th');
+          th.textContent = column;
+          th.addEventListener('click', () => sortTable(column));
+          
+          // Add sort indicator if this is the current sort column
+          if (column === currentSortColumn) {
+            const indicator = document.createElement('span');
+            indicator.className = 'sort-indicator';
+            indicator.textContent = currentSortAscending ? ' ↑' : ' ↓';
+            th.appendChild(indicator);
+          }
+          
+          headerRow.appendChild(th);
+        });
+        
+        // Create data rows
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          columns.forEach(column => {
+            const td = document.createElement('td');
+            td.textContent = row[column] || '';
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+      }
+      
+      function populateFilterDropdown(columns) {
+        const filterColumn = document.getElementById('filterColumn');
+        
+        // Clear existing options except the first one
+        while (filterColumn.options.length > 1) {
+          filterColumn.remove(1);
+        }
+        
+        // Add column options
+        columns.forEach(column => {
+          const option = document.createElement('option');
+          option.value = column;
+          option.textContent = column;
+          filterColumn.appendChild(option);
+        });
+      }
+      
+      function sortTable(column) {
+        if (column === currentSortColumn) {
+          // Toggle sort direction
+          currentSortAscending = !currentSortAscending;
+        } else {
+          currentSortColumn = column;
+          currentSortAscending = true;
+        }
+        
+        vscode.postMessage({
+          command: 'sort',
+          column: column,
+          ascending: currentSortAscending
+        });
+      }
+      
+      // Set up event listeners
+      document.getElementById('applyFilter').addEventListener('click', () => {
+        const column = document.getElementById('filterColumn').value;
+        const value = document.getElementById('filterValue').value;
+        
+        if (column && value) {
+          // Add to active filters
+          activeFilters.push({ column, value });
+          
+          vscode.postMessage({
+            command: 'filter',
+            criteria: activeFilters
+          });
+        }
+      });
+      
+      document.getElementById('clearFilter').addEventListener('click', () => {
+        activeFilters = [];
+        document.getElementById('filterColumn').selectedIndex = 0;
+        document.getElementById('filterValue').value = '';
+        
+        vscode.postMessage({
+          command: 'filter',
+          criteria: []
+        });
+      });
+      
+      // Export dropdown
+      document.getElementById('exportBtn').addEventListener('click', function() {
+        const dropdown = document.getElementById('exportDropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      document.querySelectorAll('#exportDropdown a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const format = this.getAttribute('data-format');
+          vscode.postMessage({
+            command: 'export',
+            format: format
+          });
+          document.getElementById('exportDropdown').style.display = 'none';
+        });
+      });
+      
+      // Visualize dropdown
+      document.getElementById('visualizeBtn').addEventListener('click', function() {
+        const dropdown = document.getElementById('visualizeDropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      document.querySelectorAll('#visualizeDropdown a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const type = this.getAttribute('data-type');
+          vscode.postMessage({
+            command: 'visualize',
+            type: type
+          });
+          document.getElementById('visualizeDropdown').style.display = 'none';
+        });
+      });
+      
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!e.target.matches('#exportBtn') && !e.target.closest('#exportDropdown')) {
+          document.getElementById('exportDropdown').style.display = 'none';
+        }
+        
+        if (!e.target.matches('#visualizeBtn') && !e.target.closest('#visualizeDropdown')) {
+          document.getElementById('visualizeDropdown').style.display = 'none';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+

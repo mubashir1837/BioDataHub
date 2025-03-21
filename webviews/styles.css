@@ -1,0 +1,153 @@
+body {
+  font-family: var(--vscode-font-family);
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.toolbar {
+  padding: 10px;
+  background-color: var(--vscode-editor-lineHighlightBackground);
+  border-bottom: 1px solid var(--vscode-panel-border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+  position: relative;
+}
+
+select,
+input,
+button {
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border: 1px solid var(--vscode-input-border);
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+}
+
+button:hover {
+  background-color: var(--vscode-button-hoverBackground);
+}
+
+.data-container {
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid var(--vscode-panel-border);
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--vscode-editor-lineHighlightBackground);
+  position: sticky;
+  top: 0;
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+}
+
+.sort-indicator {
+  margin-left: 5px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: var(--vscode-editor-background);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border: 1px solid var(--vscode-panel-border);
+}
+
+#exportDropdown {
+  top: 100%;
+  right: 50px;
+}
+
+#visualizeDropdown {
+  top: 100%;
+  right: 0;
+}
+
+.dropdown a {
+  color: var(--vscode-editor-foreground);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .filter-container,
+  .actions {
+    width: 100%;
+  }
+}
+
+/* Sequence data styling */
+.sequence-dna {
+  font-family: monospace;
+  color: #4caf50;
+}
+
+.sequence-rna {
+  font-family: monospace;
+  color: #2196f3;
+}
+
+.sequence-protein {
+  font-family: monospace;
+  color: #9c27b0;
+}
+

@@ -1,0 +1,136 @@
+{
+  "name": "biodatahub",
+  "publisher": "Mubashir-Ali",
+  "displayName": "BioDataHub",
+  "description": "Bioinformatics CSV data exploration extension for VS Code",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.64.0"
+  },
+  "categories": [
+    "Data Science",
+    "Visualization"
+  ],
+  "activationEvents": [
+    "onCommand:biodatahub.searchDatasets",
+    "onCommand:biodatahub.searchOnlineDatasets",
+    "onCommand:biodatahub.downloadDataset",
+    "onCommand:biodatahub.previewCSV",
+    "onCommand:biodatahub.generateMetadata",
+    "onCommand:biodatahub.visualizeData",
+    "onCommand:biodatahub.exportData"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "biodatahub.searchDatasets",
+        "title": "BioDataHub: Search Local Datasets"
+      },
+      {
+        "command": "biodatahub.searchOnlineDatasets",
+        "title": "BioDataHub: Search Online Datasets"
+      },
+      {
+        "command": "biodatahub.downloadDataset",
+        "title": "BioDataHub: Download Dataset"
+      },
+      {
+        "command": "biodatahub.previewCSV",
+        "title": "BioDataHub: Preview CSV"
+      },
+      {
+        "command": "biodatahub.generateMetadata",
+        "title": "BioDataHub: Generate Dataset Metadata"
+      },
+      {
+        "command": "biodatahub.visualizeData",
+        "title": "BioDataHub: Visualize Data"
+      },
+      {
+        "command": "biodatahub.exportData",
+        "title": "BioDataHub: Export Data"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .csv",
+          "command": "biodatahub.previewCSV",
+          "group": "biodatahub"
+        },
+        {
+          "when": "resourceExtname == .csv",
+          "command": "biodatahub.generateMetadata",
+          "group": "biodatahub"
+        },
+        {
+          "when": "resourceExtname == .csv",
+          "command": "biodatahub.visualizeData",
+          "group": "biodatahub"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "biodatahub",
+          "title": "BioDataHub",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "biodatahub": [
+        {
+          "id": "biodatahubDatasets",
+          "name": "Datasets",
+          "icon": "resources/dna.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "build": "tsc",
+    "test": "node node_modules/@vscode/test-electron/out/runTest.js --extensionDevelopmentPath=. --extensionTestsPath=out/test",
+    "test:vscode": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "csv-parser": "^3.2.0",
+    "d3": "^7.0.0",
+    "minimatch": "^3.1.2",
+    "path": "^0.12.7",
+    "webview": "^1.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/chai": "^5.2.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^8.2.3",
+    "@types/node": "^14.18.63",
+    "@types/vscode": "^1.64.0",
+    "@typescript-eslint/eslint-plugin": "^8.27.0",
+    "@typescript-eslint/parser": "^8.27.0",
+    "@vscode/test-electron": "^2.4.1",
+    "chai": "^5.2.0",
+    "electron": "^35.0.3",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "glob": "^7.2.3",
+    "globals": "^16.0.0",
+    "mocha": "^11.1.0",
+    "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5",
+    "typescript-eslint": "^8.27.0",
+    "vscode-test": "^1.5.2"
+  },
+  "private": true
+}
