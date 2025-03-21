@@ -62,10 +62,10 @@ Right-click on a `.csv` file in the Explorer to access the following options:
 ## Screenshots
 
 ### Activity Bar Integration
-![Activity Bar](resources/icon.svg)
+![Activity Bar](resources/visualize-data.png)
 
 ### Dataset View
-![Dataset View](resources/dna.svg)
+![Dataset View](resources/data1.png)
 
 ## Keybindings
 
