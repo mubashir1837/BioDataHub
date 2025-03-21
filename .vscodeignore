@@ -1,0 +1,10 @@
+# Ignore unnecessary files
+.vscode/
+.vscode-test/
+.git/
+node_modules/
+tmp-*
+tests/
+.vscodeignore
+.gitignore
+

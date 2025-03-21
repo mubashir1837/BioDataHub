@@ -1,0 +1,31 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="helixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#26A69A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7E57C2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="#e0f7fa" />
+  
+  <!-- DNA Helix -->
+  <path d="M256,80 Q300,120 256,160 Q212,200 256,240 Q300,280 256,320 Q212,360 256,400"
+        stroke="url(#helixGradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M256,80 Q212,120 256,160 Q300,200 256,240 Q212,280 256,320 Q300,360 256,400"
+        stroke="url(#helixGradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  
+  <!-- Data Nodes -->
+  <circle cx="256" cy="160" r="8" fill="#7E57C2"/>
+  <circle cx="256" cy="240" r="8" fill="#7E57C2"/>
+  <circle cx="256" cy="320" r="8" fill="#7E57C2"/>
+  
+  <!-- Data Spark -->
+  <path d="M300,180 Q320,160 340,150 L360,140" stroke="#CE93D8" stroke-width="4" fill="none"/>
+  <circle cx="340" cy="150" r="3" fill="#CE93D8"/>
+  
+  <!-- Text -->
+  <text x="256" y="460" font-family="Fira Code" font-size="32" text-anchor="middle" fill="#00796B" font-weight="600">
+    BioDataHub
+  </text>
+</svg>

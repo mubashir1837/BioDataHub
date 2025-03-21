@@ -64,7 +64,7 @@ async function searchKaggleDatasets(query: string, token: vscode.CancellationTok
       title: "Gene Expression Dataset",
       description: "Comprehensive gene expression data for cancer research",
       source: "Kaggle" as const, // Explicitly cast to the literal type
-      url: "https://www.kaggle.com/datasets/gene-expression",
+      url: "https://www.kaggle.com/datasets/crawford/gene-expression",
       size: "2.3 GB",
       datePublished: "2023-05-15",
       tags: ["gene", "expression", "cancer", "bioinformatics"],
@@ -74,7 +74,7 @@ async function searchKaggleDatasets(query: string, token: vscode.CancellationTok
       title: "Protein Structure Database",
       description: "Collection of protein structures with annotations",
       source: "Kaggle" as const, // Explicitly cast to the literal type
-      url: "https://www.kaggle.com/datasets/protein-structure",
+      url: "https://www.kaggle.com/datasets/shahir/protein-data-set",
       size: "1.5 GB",
       datePublished: "2023-03-22",
       tags: ["protein", "structure", "bioinformatics"],
@@ -91,6 +91,7 @@ async function searchKaggleDatasets(query: string, token: vscode.CancellationTok
  */
 async function searchZenodoDatasets(query: string, token: vscode.CancellationToken): Promise<OnlineDataset[]> {
   // Simulate API call with delay
+
   await new Promise((resolve) => setTimeout(resolve, 1500))
 
   if (token.isCancellationRequested) {
@@ -104,7 +105,7 @@ async function searchZenodoDatasets(query: string, token: vscode.CancellationTok
       title: "Genomic Sequencing Data",
       description: "Next-generation sequencing data for genomic analysis",
       source: "Zenodo" as const, // Explicitly cast to the literal type
-      url: "https://zenodo.org/record/genomic-sequencing",
+      url: "https://zenodo.org/records/1040361",
       size: "5.7 GB",
       datePublished: "2023-06-10",
       tags: ["genomic", "sequencing", "bioinformatics", "NGS"],
@@ -114,7 +115,7 @@ async function searchZenodoDatasets(query: string, token: vscode.CancellationTok
       title: "Metabolomic Profiles",
       description: "Metabolomic profiles from mass spectrometry experiments",
       source: "Zenodo" as const, // Explicitly cast to the literal type
-      url: "https://zenodo.org/record/metabolomic-profiles",
+      url: "https://zenodo.org/records/4575489",
       size: "850 MB",
       datePublished: "2023-04-05",
       tags: ["metabolomics", "mass-spectrometry", "bioinformatics"],

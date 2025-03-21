@@ -1,15 +1,71 @@
 {
-  "name": "biodatahub",
+  "name": "bio-data-hub",
   "publisher": "Mubashir-Ali",
-  "displayName": "BioDataHub",
+  "displayName": "Bio-Data-Hub",
   "description": "Bioinformatics CSV data exploration extension for VS Code",
   "version": "0.1.0",
+  "icon": "resources/logo.jpg",
   "engines": {
     "vscode": "^1.64.0"
   },
   "categories": [
+    "Visualization",
+    "Azure",
+    "Chat",
     "Data Science",
-    "Visualization"
+    "Debuggers",
+    "Extension Packs",
+    "Education",
+    "Formatters",
+    "Keymaps",
+    "Language Packs",
+    "Linters",
+    "Machine Learning",
+    "Notebooks",
+    "Programming Languages",
+    "SCM Providers",
+    "Snippets",
+    "Testing",
+    "Themes",
+    "Other"
+  ],
+  "keywords": [
+    "bioinformatics",
+    "csv",
+    "data science",
+    "data visualization",
+    "machine learning",
+    "data analysis",
+    "data mining",
+    "data management",
+    "genomics",
+    "previewCSV",
+    "metadata",
+    "data exploration",
+    "proteomics",
+    "biotechnology",
+    "big data",
+    "data processing",
+    "data analytics",
+    "metagenomics",
+    "genome sequencing",
+    "computational biology",
+    "data exploration",
+    "csv viewer",
+    "biostatistics",
+    "omics",
+    "data transformation",
+    "data cleaning",
+    "biological data",
+    "genetic analysis",
+    "dna analysis",
+    "rna sequencing",
+    "NGS analysis",
+    "metadata",
+    "bioinformatics tools",
+    "clinical data",
+    "health informatics",
+    "scientific computing"
   ],
   "activationEvents": [
     "onCommand:biodatahub.searchDatasets",
@@ -83,12 +139,29 @@
     "views": {
       "biodatahub": [
         {
-          "id": "biodatahubDatasets",
+          "id": "biodatahub-Datasets",
           "name": "Datasets",
           "icon": "resources/dna.svg"
         }
       ]
-    }
+    },
+    "keybindings": [
+      {
+        "command": "biodatahub.previewCSV",
+        "key": "ctrl+shift+p",
+        "when": "editorLangId == csv"
+      },
+      {
+        "command": "biodatahub.visualizeData",
+        "key": "ctrl+shift+v",
+        "when": "editorLangId == csv"
+      },
+      {
+        "command": "biodatahub.generateMetadata",
+        "key": "ctrl+shift+m",
+        "when": "editorLangId == csv"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -131,6 +204,10 @@
     "typescript": "^4.9.5",
     "typescript-eslint": "^8.27.0",
     "vscode-test": "^1.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mubashir1837/BioDataHub.git"
   },
   "private": true
 }
