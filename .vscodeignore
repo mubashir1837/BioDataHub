@@ -8,3 +8,5 @@ tests/
 .vscodeignore
 .gitignore
 
+# ⚠️ Do NOT ignore node_modules completely if dependencies are needed
+!node_modules/csv-parser

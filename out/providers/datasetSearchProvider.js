@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatasetSearchProvider = void 0;
 const vscode = require("vscode");
 const path = require("path");
-const fs = require("fs");
+const fs = require("fs/promises");
 class DatasetSearchProvider {
     constructor() {
         this._onDidChangeTreeData = new vscode.EventEmitter();
@@ -17,19 +17,15 @@ class DatasetSearchProvider {
         return element;
     }
     getChildren(element) {
-        if (element) {
-            return Promise.resolve([]);
-        }
-        return Promise.resolve(this.searchResults);
+        return Promise.resolve(element ? [] : this.searchResults);
     }
     async showSearchInterface() {
         const searchOption = await vscode.window.showQuickPick([
             { label: "Search Local Workspace", description: "Search for datasets in your workspace" },
             { label: "Search Online Repositories", description: "Search for datasets on Kaggle, Zenodo, etc." },
         ], { placeHolder: "Select search option" });
-        if (!searchOption) {
+        if (!searchOption)
             return;
-        }
         if (searchOption.label === "Search Online Repositories") {
             vscode.commands.executeCommand("biodatahub.searchOnlineDatasets");
             return;
@@ -49,16 +45,15 @@ class DatasetSearchProvider {
             vscode.window.showInformationMessage("No workspace folder is open.");
             return;
         }
-        vscode.window.withProgress({
+        await vscode.window.withProgress({
             location: vscode.ProgressLocation.Notification,
             title: `Searching for datasets matching "${searchTerm}"`,
             cancellable: true,
         }, async (progress, token) => {
             progress.report({ increment: 0 });
             for (const folder of workspaceFolders) {
-                if (token.isCancellationRequested) {
+                if (token.isCancellationRequested)
                     break;
-                }
                 await this.searchInFolder(folder.uri.fsPath, searchTerm, progress);
             }
             progress.report({ increment: 100 });
@@ -74,16 +69,16 @@ class DatasetSearchProvider {
     }
     async searchInFolder(folderPath, searchTerm, progress) {
         try {
-            const files = fs.readdirSync(folderPath);
+            const files = await fs.readdir(folderPath);
             for (const file of files) {
                 const filePath = path.join(folderPath, file);
-                const stats = fs.statSync(filePath);
+                const stats = await fs.stat(filePath);
                 if (stats.isDirectory()) {
                     await this.searchInFolder(filePath, searchTerm, progress);
                 }
                 else if (stats.isFile() && this.isBioinformaticsFile(file)) {
                     try {
-                        const fileContent = fs.readFileSync(filePath, "utf8");
+                        const fileContent = await fs.readFile(filePath, "utf8");
                         if (fileContent.toLowerCase().includes(searchTerm.toLowerCase())) {
                             this.searchResults.push(new DatasetItem(path.basename(file), vscode.TreeItemCollapsibleState.None, filePath, stats.size, stats.mtime, this.getFileType(file), {
                                 command: "biodatahub.previewCSV",
@@ -147,24 +142,7 @@ Type: ${fileType}
 Size: ${this.formatFileSize(fileSize)}
 Modified: ${modifiedDate.toLocaleString()}`;
         this.description = `${fileType} - ${this.formatFileSize(fileSize)}`;
-        // ✅ Fixed icon issue
-        switch (fileType) {
-            case "CSV":
-            case "TSV":
-                this.iconPath = vscode.ThemeIcon.Folder; // Use a predefined ThemeIcon
-                break;
-            case "FASTA":
-            case "FASTQ":
-                this.iconPath = vscode.ThemeIcon.File; // Use a predefined ThemeIcon
-                break;
-            case "GFF":
-            case "VCF":
-            case "BED":
-                this.iconPath = vscode.ThemeIcon.File;
-                break;
-            default:
-                this.iconPath = vscode.ThemeIcon.File; // Default file icon
-        }
+        this.iconPath = this.getIcon(fileType);
         this.contextValue = "dataset";
     }
     formatFileSize(bytes) {
@@ -176,6 +154,22 @@ Modified: ${modifiedDate.toLocaleString()}`;
             unitIndex++;
         }
         return `${size.toFixed(1)} ${units[unitIndex]}`;
+    }
+    getIcon(fileType) {
+        switch (fileType) {
+            case "CSV":
+            case "TSV":
+                return new vscode.ThemeIcon("file");
+            case "FASTA":
+            case "FASTQ":
+                return new vscode.ThemeIcon("database");
+            case "GFF":
+            case "VCF":
+            case "BED":
+                return new vscode.ThemeIcon("symbol-structure");
+            default:
+                return new vscode.ThemeIcon("file");
+        }
     }
 }
 //# sourceMappingURL=datasetSearchProvider.js.map

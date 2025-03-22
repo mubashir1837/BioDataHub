@@ -1,11 +1,12 @@
 # Bio-Data-Hub
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.1.2-blue)
 ![VS Code](https://img.shields.io/badge/VS%20Code-%5E1.64.0-blue)
 ![License](https://img.shields.io/badge/license-Private-red)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-![Bio-Data-Hub Logo](resources/logo.jpg)
+<img src="resources/logo.jpg"  width="100"/>
+
 
 ## Overview
 
@@ -123,12 +124,12 @@ Right-click on a `.csv` file in the Explorer to access the following options:
 
 ## Repository
 
-[GitHub Repository](https://github.com/mubashir1837/BioDataHub)
+[GitHub Repository](https://github.com/mubashir1837)
 
 ## Social Links
 
-- **Author**: [Mubashir Ali](https://github.com/mubashir1837)
-- **LinkedIn**: [Mubashir Ali](https://www.linkedin.com/in/mubashirali3/)
+[<img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=social&logo=linkedin" alt="LinkedIn">](https://www.linkedin.com/in/mubashirali3/)
+[<img src="https://img.shields.io/badge/GitHub-Follow-purple?style=social&logo=github" alt="GitHub">](https://github.com/mubashir1837)
 
 ## License
 

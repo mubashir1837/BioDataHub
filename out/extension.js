@@ -17,33 +17,26 @@ function activate(context) {
     const metadataProvider = new metadataProvider_1.MetadataProvider();
     const visualizationProvider = new visualizationProvider_1.VisualizationProvider(vscode.Uri.file(context.extensionPath));
     // Register commands
-    const searchCommand = vscode.commands.registerCommand("biodatahub.searchDatasets", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("biodatahub.searchDatasets", () => {
         datasetSearchProvider.showSearchInterface();
-    });
-    const searchOnlineCommand = vscode.commands.registerCommand("biodatahub.searchOnlineDatasets", () => {
+    }), vscode.commands.registerCommand("biodatahub.searchOnlineDatasets", () => {
         (0, searchDatasets_1.showOnlineDatasetSearchInterface)();
-    });
-    const downloadDatasetCommand = vscode.commands.registerCommand("biodatahub.downloadDataset", (dataset) => {
+    }), vscode.commands.registerCommand("biodatahub.downloadDataset", (dataset) => {
         (0, downloadDataset_1.downloadDataset)(dataset);
-    });
-    const previewCommand = vscode.commands.registerCommand("biodatahub.previewCSV", (uri) => {
+    }), vscode.commands.registerCommand("biodatahub.previewCSV", (uri) => {
         csvPreviewPanel_1.CSVPreviewPanel.createOrShow(vscode.Uri.file(context.extensionPath), uri);
-    });
-    const generateMetadataCommand = vscode.commands.registerCommand("biodatahub.generateMetadata", (uri) => {
+    }), vscode.commands.registerCommand("biodatahub.generateMetadata", (uri) => {
         metadataProvider.generateAndShowMetadata(uri);
-    });
-    const visualizeDataCommand = vscode.commands.registerCommand("biodatahub.visualizeData", (uri) => {
+    }), vscode.commands.registerCommand("biodatahub.visualizeData", (uri) => {
         visualizationProvider.showVisualizationOptions(uri);
-    });
+    }), 
     // Register CSV file content provider for preview
-    const csvContentProvider = vscode.workspace.registerTextDocumentContentProvider("biodatahub-csv", csvDataProvider);
+    vscode.workspace.registerTextDocumentContentProvider("biodatahub-csv", csvDataProvider), 
     // Register tree view for dataset search results
-    const datasetTreeView = vscode.window.createTreeView("biodatahubDatasets", {
+    vscode.window.createTreeView("biodatahubDatasets", {
         treeDataProvider: datasetSearchProvider,
         showCollapseAll: true,
-    });
-    // Add all disposables to context
-    context.subscriptions.push(searchCommand, searchOnlineCommand, downloadDatasetCommand, previewCommand, generateMetadataCommand, visualizeDataCommand, csvContentProvider, datasetTreeView);
+    }));
 }
 exports.activate = activate;
 function deactivate() {

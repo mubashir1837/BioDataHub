@@ -3,7 +3,7 @@
   "publisher": "Mubashir-Ali",
   "displayName": "Bio-Data-Hub",
   "description": "Bioinformatics CSV data exploration extension for VS Code",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "icon": "resources/logo.jpg",
   "engines": {
     "vscode": "^1.64.0"
@@ -190,6 +190,7 @@
     "@types/vscode": "^1.64.0",
     "@typescript-eslint/eslint-plugin": "^8.27.0",
     "@typescript-eslint/parser": "^8.27.0",
+    "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
     "chai": "^5.2.0",
     "electron": "^35.0.3",
