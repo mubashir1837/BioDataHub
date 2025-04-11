@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-Private-red)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-<img src="resources/logo.jpg"  width="100"/>
+<img src="resources/logo.jpg"  width="10px"/>
 
 
 ## Overview
