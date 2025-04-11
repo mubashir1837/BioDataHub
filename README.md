@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-Private-red)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-<img src="resources/logo.jpg"  width="10px"/>
+<img src="resources/logo.jpg"  width="50px"/>
 
 
 ## Overview
@@ -77,50 +77,6 @@ Right-click on a `.csv` file in the Explorer to access the following options:
 | `Ctrl+Shift+V`     | Visualize Data          | `editorLangId == csv` |
 
 ## Development
-
-### Scripts
-
-- **Compile**: `npm run compile`
-- **Watch**: `npm run watch`
-- **Lint**: `npm run lint`
-- **Test**: `npm run test`
-
-### Dependencies
-
-| Dependency         | Version   |
-|--------------------|-----------|
-| `axios`            | `^1.6.2` |
-| `csv-parser`       | `^3.2.0` |
-| `d3`               | `^7.0.0` |
-| `minimatch`        | `^3.1.2` |
-| `path`             | `^0.12.7` |
-| `webview`          | `^1.1.0` |
-
-### Dev Dependencies
-
-| Dependency                 | Version   |
-|----------------------------|-----------|
-| `@eslint/js`               | `^9.22.0` |
-| `@types/chai`              | `^5.2.0` |
-| `@types/glob`              | `^8.1.0` |
-| `@types/mocha`             | `^8.2.3` |
-| `@types/node`              | `^14.18.63` |
-| `@types/vscode`            | `^1.64.0` |
-| `@typescript-eslint/eslint-plugin` | `^8.27.0` |
-| `@typescript-eslint/parser` | `^8.27.0` |
-| `chai`                     | `^5.2.0` |
-| `electron`                 | `^35.0.3` |
-| `eslint`                   | `^9.22.0` |
-| `eslint-config-prettier`   | `^10.1.1` |
-| `eslint-plugin-prettier`   | `^5.2.3` |
-| `glob`                     | `^7.2.3` |
-| `globals`                  | `^16.0.0` |
-| `mocha`                    | `^11.1.0` |
-| `prettier`                 | `^3.5.3` |
-| `ts-node`                  | `^10.9.2` |
-| `typescript`               | `^4.9.5` |
-| `typescript-eslint`        | `^8.27.0` |
-| `vscode-test`              | `^1.5.2` |
 
 ## Repository
 
