@@ -27,7 +27,8 @@
 
 ## Run tests
 
-* Install the [Extension Test Runner](https://marketplace.visualstudio.com/items?itemName=ms-vscode.extension-test-runner)
+* Install dependencies by running `npm install`.
+* Run tests using the command `npm test` or start the test watcher with `npm run watch`.
 * Run the "watch" task via the **Tasks: Run Task** command. Make sure this is running, or tests might not be discovered.
 * Open the Testing view from the activity bar and click the Run Test" button, or use the hotkey `Ctrl/Cmd + ; A`
 * See the output of the test result in the Test Results view.

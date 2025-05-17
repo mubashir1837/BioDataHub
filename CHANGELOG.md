@@ -40,10 +40,10 @@ All notable changes to **Bio-Data-Hub** will be documented in this file.
 
 | Version | Last Updated    |
 |---------|-----------------|
-| 1.4.2   | 4 minutes ago   |
-| 1.3.2   | 3 hours ago     |
-| 1.2.2   | 3 hours ago     |
-| 1.1.2   | 3 hours ago     |
+| 1.4.2   | 2025-05-17      |
+| 1.3.2   | 2025-05-17      |
+| 1.2.2   | 2025-05-16      |
+| 1.1.2   | 2025-05-16      |
 | 0.1.4   | 2025-01-22      |
 
 **Bio-Data-Hub** is maintained by [Mubashir-Ali](https://github.com/mubashir1837) and sponsored via [GitHub Sponsors](https://github.com/sponsors/mubashir1837).
