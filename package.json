@@ -3,8 +3,12 @@
   "publisher": "Mubashir-Ali",
   "displayName": "Bio-Data-Hub",
   "description": "Bioinformatics CSV data exploration extension for VS Code",
-  "version": "0.1.2",
+  "version": "1.4.2",
   "icon": "resources/logo.jpg",
+  "pricing": "Free",
+  "sponsor": {
+    "url": "https://github.com/sponsors/mubashir1837"
+  },
   "engines": {
     "vscode": "^1.64.0"
   },
@@ -132,7 +136,7 @@
         {
           "id": "biodatahub",
           "title": "BioDataHub",
-          "icon": "resources/icon.svg"
+          "icon": "resources/dna.svg"
         }
       ]
     },
@@ -140,8 +144,7 @@
       "biodatahub": [
         {
           "id": "biodatahub-Datasets",
-          "name": "Datasets",
-          "icon": "resources/dna.svg"
+          "name": "Datasets"
         }
       ]
     },
