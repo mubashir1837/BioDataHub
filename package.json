@@ -72,13 +72,6 @@
     "scientific computing"
   ],
   "activationEvents": [
-    "onCommand:biodatahub.searchDatasets",
-    "onCommand:biodatahub.searchOnlineDatasets",
-    "onCommand:biodatahub.downloadDataset",
-    "onCommand:biodatahub.previewCSV",
-    "onCommand:biodatahub.generateMetadata",
-    "onCommand:biodatahub.visualizeData",
-    "onCommand:biodatahub.exportData"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -144,7 +137,8 @@
       "biodatahub": [
         {
           "id": "biodatahub-Datasets",
-          "name": "Datasets"
+          "name": "Datasets",
+           "icon": "resources/dna.svg"
         }
       ]
     },
