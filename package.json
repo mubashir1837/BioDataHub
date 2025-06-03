@@ -3,7 +3,7 @@
   "publisher": "Mubashir-Ali",
   "displayName": "Bio-Data-Hub",
   "description": "Bioinformatics CSV data exploration extension for VS Code",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "icon": "resources/logo.jpg",
   "pricing": "Free",
   "sponsor": {
