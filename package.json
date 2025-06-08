@@ -3,11 +3,11 @@
   "publisher": "Mubashir-Ali",
   "displayName": "Bio-Data-Hub",
   "description": "Bioinformatics CSV data exploration extension for VS Code",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "icon": "resources/logo.jpg",
   "pricing": "Free",
   "sponsor": {
-    "url": "https://github.com/sponsors/mubashir1837"
+    "url": "https://patreon.com/mubashir1837"
   },
   "engines": {
     "vscode": "^1.64.0"
@@ -40,6 +40,8 @@
     "data visualization",
     "machine learning",
     "data analysis",
+    "research tool",
+    "data exploration",
     "data mining",
     "data management",
     "genomics",
@@ -61,6 +63,7 @@
     "data transformation",
     "data cleaning",
     "biological data",
+    "vsce",
     "genetic analysis",
     "dna analysis",
     "rna sequencing",
@@ -206,6 +209,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mubashir1837/BioDataHub.git"
-  },
-  "private": true
+  }
 }

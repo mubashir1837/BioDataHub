@@ -2,3 +2,4 @@
 node_modules/.vscode-test/
 node_modules
 .vscode-test/vscode-linux-x64-1.98.2/code.vscode-test/
+vsc-extension-quickstart.md

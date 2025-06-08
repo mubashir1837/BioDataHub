@@ -1,7 +1,6 @@
-# Bio Data Hub 🌱
+# Bio Data Hub 
 
 A VS Code extension for biological data exploration.
-
 
 
 [![Version](https://img.shields.io/badge/version-1.4.2-blue)](https://marketplace.visualstudio.com/items?itemName=Mubashir-Ali.bio-data-hub&wt.mc_id=studentamb_468108)
@@ -82,20 +81,18 @@ Right-click on a `.csv` file in the Explorer to access the following options:
 | `Ctrl+Shift+M`     | Generate Metadata       | `editorLangId == csv` |
 | `Ctrl+Shift+V`     | Visualize Data          | `editorLangId == csv` |
 
-## Development
+
 
 ## Repository
 
-[GitHub Repository](https://github.com/mubashir1837)
+[GitHub Repository](https://github.com/mubashir1837/BioDataHub)
 
 ## Social Links
 
 [<img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=social&logo=linkedin" alt="LinkedIn">](https://www.linkedin.com/in/mubashirali3/)
 [<img src="https://img.shields.io/badge/GitHub-Follow-purple?style=social&logo=github" alt="GitHub">](https://github.com/mubashir1837)
 
-## License
-
-This project is licensed under a **Private License**. Unauthorized copying, distribution, or modification is prohibited.
+.
 
 ## Contributing
 
@@ -107,4 +104,4 @@ For any issues or feature requests, please open an issue on the [GitHub Reposito
 
 ---
 
-Happy coding with **Bio-Data-Hub**! 🚀  
+Happy coding with **Bio-Data-Hub**! 
