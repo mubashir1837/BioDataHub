@@ -97,6 +97,8 @@ Right-click on a `.csv` file in the Explorer to access the following options:
 
 .
 
+## Official Open VSX Publisher: Mubashir-Ali (mubashir1837)
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request.
