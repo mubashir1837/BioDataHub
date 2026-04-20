@@ -6,6 +6,7 @@ import { MetadataProvider } from "./providers/metadataProvider";
 import { VisualizationProvider } from "./providers/visualizationProvider";
 import { showOnlineDatasetSearchInterface } from "./commands/searchDatasets";
 import { downloadDataset } from "./commands/downloadDataset";
+import { registerOpenVcfCommand } from "./commands/openVcfFile";
 
 export function activate(context: vscode.ExtensionContext) {
   console.log("BioDataHub extension is now active");
@@ -49,6 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
       showCollapseAll: true,
     })
   );
+  registerOpenVcfCommand(context);
 }
 
 export function deactivate() {
