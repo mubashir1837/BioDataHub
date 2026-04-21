@@ -84,6 +84,7 @@
     "onCommand:biodatahub.visualizeData",
     "onCommand:biodatahub.exportData",
     "onCommand:biodatahub.pcaClustering",
+    "onCommand:biodatahub.openVcfFile",
     "onLanguage:csv",
     "onView:biodatahub-Datasets"
   ],
@@ -103,7 +104,11 @@
       },
       {
         "command": "biodatahub.previewCSV",
-        "title": "BioDataHub: Preview CSV"
+"title": "BioDataHub: Preview CSV"
+      },
+      {
+        "command": "biodatahub.openVcfFile",
+        "title": "BioDataHub: Open VCF / Genotype File"
       },
       {
         "command": "biodatahub.generateMetadata",
@@ -126,7 +131,12 @@
       "explorer/context": [
         {
           "when": "resourceExtname == .csv",
-          "command": "biodatahub.previewCSV",
+"command": "biodatahub.previewCSV",
+"group": "biodatahub"
+        },
+        {
+          "when": "resourceExtname == .vcf || resourceExtname == .txt",
+          "command": "biodatahub.openVcfFile",
           "group": "biodatahub"
         },
         {
